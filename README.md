@@ -1,4 +1,4 @@
-Apache Hive
+1、Apache Hive
 
 Hive是原始的SQL-on-Hadoop解决方案。它是一个开源的Java项目，能够将SQL转换成一系列可以在标准的Hadoop TaskTrackers上运行的MapReduce任务。Hive通过一个metastore（本身就是一个数据库）存储表模式、分区和位置以期提供像MySQL一样的功能。它支持大部分MySQL语法，同时使用相似的 database/table/view约定组织数据集。Hive提供了以下功能：
 
@@ -18,7 +18,7 @@ Hive的未来
 
 Hortonworks 目前正在推进Apache Tez 的开发以便于将其作为新的Hive后端解决现在因为使用MapReduce而导致的响应时间慢的问题。
 
-Cloudera Impala
+2、Cloudera Impala
 
 Impala是一个针对Hadoop的开源的“交互式”SQL查询引擎。它由Cloudera构建，后者是目前市场上最大的Hadoop供应商之一。和Hive一样，Impala也提供了一种可以针对已有的Hadoop数据编写SQL查询的方法。与Hive不同的是它并没有使用MapReduce执行查询，而是使用了自己的执行守护进程集合，这些进程需要与Hadoop数据节点安装在一起。Impala提供了以下功能：
 
@@ -36,7 +36,7 @@ Impala的未来
 
 Cloudera 已经开始尝试将Impala与YARN集成，这让我们在下一代Hadoop集群上做Impala开发的时候不再那么痛苦。
 
-Presto
+3、Presto
 
 Presto是一个用Java语言开发的、开源的“交互式”SQL查询引擎。它由Facebook构建，即Hive最初的创建者。Presto采用的方法类似于Impala，即提供交互式体验的同时依然使用已有的存储在Hadoop上的数据集。它也需要安装在许多“节点”上，类似于Impala。Presto提供了以下功能：
 
@@ -48,7 +48,7 @@ JDBC 驱动
 
 Presto的目标和Cloudera Impala一样。但是与Impala不同的是它并没有被一个主要的供应商支持，所以很不幸你在使用Presto的时候无法获得企业支持。但是有一些知名的、令人尊敬的技术公司已经在产品环境中使用它了，它大概是有社区的支持。与Impala相似的是，它的性能也依赖于特定的数据存储格式（RCFile）。老实地说，在部署Presto之前你需要仔细考虑自己是否有能力支持并调试Presto，如果你对它的这些方面满意并且相信Facebook并不会遗弃开源版本的Presto，那么使用它。
 
-Shark
+4、Shark
 
 Shark是由UC Berkeley大学使用Scala语言开发的一个开源SQL查询引擎。与Impala和Presto相似的是，它的设计目标是作为Hive的一个补充，同时在它自己的工作节点集合上执行查询而不是使用MapReduce。与Impala和Presto不同的是Shark构建在已有的 Apache Spark数据处理引擎之上。Spark现在非常流行，它的社区也在发展壮大。可以将Spark看作是一个比MapReduce更快的可选方案。Shark提供了以下功能：
 
@@ -60,7 +60,7 @@ Shark是由UC Berkeley大学使用Scala语言开发的一个开源SQL查询引�
 
 Shark非常有趣，因为它既想支持Hive功能又想极力地改善性能。现在有很多组织正在使用Spark，但是不确定有多少在用Shark。我并不认为它的性能能够赶上Presto和Impala，但是如果你已经打算使用Spark那么可以尝试使用一下Shark，特别是Spark正在被越来越多的主要供应商所支持。
 
-Apache Drill
+5、Apache Drill
 
 Apache Drill是一个针对Hadoop的、开源的“交互式”SQL查询引擎。Drill现在由MapR推动，尽管他们现在也支持Impala。Apache Drill的目标与Impala和Presto相似——对大数据集进行快速的交互式查询，同时它也需要安装工作节点（drillbits）。不同的是Drill旨在支持多种后端存储（HDFS、HBase、MongoDB），同时它的一个重点是复杂的嵌套数据集（例如JSON）。不幸的是drill现在仅在Alpha阶段，因此应用还不是很广泛。Drill提供了以下功能：
 
@@ -71,7 +71,7 @@ UDFs扩展框架、存储插件
 
 最好别用。该项目依然在Alpha阶段，因此不要在生产环境中使用它。
 
-HAWQ
+6、HAWQ
 
 Hawq是EMC Pivotal 公司的一个非开源产品，作为该公司专有Hadoop版本“Pivotal HD”的一部分提供。Pivotal宣称Hawq是“世界上最快的Hadoop SQL引擎”，已经发展了10年。然而这种观点难以得到证实。很难知道Hawq到底提供了哪些特性，但是可以收集到下面这些：
 
@@ -82,7 +82,7 @@ Hawq是EMC Pivotal 公司的一个非开源产品，作为该公司专有Hadoop�
 
 如果你使用由Pivotal公司提供的Hadoop版本那么就使用它，否则不使用。
 
-BigSQL
+7、BigSQL
 
 Big Blue 有它自己的Hadoop版本，称为Big Insights。BigSQL作为该版本的一部分提供。BigSQL用于使用MapReduce和其他能够提供低延迟结果的方法（不详）查询存储在HDFS中的数据。从BigSQL的文档中可以了解到它大概提供以下功能：
 
@@ -93,7 +93,7 @@ JDBC和ODBC 驱动
 
 如果你是IBM的客户那么就使用它，否则不使用。
 
-Apache Phoenix
+8、Apache Phoenix
 
 Apache Phoenix是一个用于Apache HBase的开源SQL引擎。它的目标是通过一个嵌入的JDBC驱动对存储在HBase中的数据提供低延迟查询。与之前介绍的其他引擎不同的是，Phoenix提供了HBase数据的读、写操作。它的功能有：
 
